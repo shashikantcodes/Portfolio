@@ -1,0 +1,171 @@
+{
+  "personalInfo": {
+    "name": "Shashikant",
+    "role": "Full Stack Developer",
+    "tagline": "Turning Ideas into Digital Reality",
+    "description": "I am a passionate developer creating innovative websites with modern web technologies. Specializing in PHP, Web Development and OOP concepts.",
+    "email": "contact@shashikant.com",
+    "socials": {
+      "github": "https://github.com/shashikant",
+      "linkedin": "https://linkedin.com/in/shashikant"
+    }
+  },
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": ["HTML", "CSS", "Bootstrap", "jQuery", "Tailwind"]
+    },
+    {
+      "category": "Backend",
+      "items": ["PHP", "C++ (OOP)", "MySQL"]
+    },
+    {
+      "category": "Tools",
+      "items": ["VS Code", "Git", "Github"]
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "role": "Full Stack Developer Intern",
+      "company": "MissionT5",
+      "location": "Remote",
+      "date": "Feb 2025 - Present",
+      "desc": "Developing a scalable internship platform using the MERN stack."
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "BetterSty Main Website",
+      "type": "company",
+      "category": "Company Project",
+      "status": "Completed",
+      "date": "Jan 2024",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+      "desc": "Developed the official website for BetterSty, featuring a modern UI, seamless navigation, and optimized performance.",
+      "fullDesc": "BetterSty required a high-performance, visually appealing landing page to showcase their services. I engineered a solution focusing on Core Web Vitals, resulting in a 99% performance score. The site features smooth scroll animations, interactive service cards, and a fully responsive layout that works flawlessly across all devices.",
+      "role": "Frontend Lead",
+      "client": "BetterSty",
+      "features": [
+        "High-performance landing page with 99+ Lighthouse score",
+        "Responsive design with mobile-first approach",
+        "Interactive service cards using Framer Motion",
+        "SEO optimized architecture"
+      ],
+      "tech": ["React.js", "Tailwind CSS", "Framer Motion"],
+      "demo": "https://bettersty.com",
+      "github": ""
+    },
+    {
+      "id": 2,
+      "title": "BetterSty CRM",
+      "type": "company",
+      "category": "Company Project",
+      "status": "Completed",
+      "date": "Mar 2024",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+      "desc": "A comprehensive CRM system for managing leads, clients, and sales pipelines efficiently.",
+      "fullDesc": "This internal tool was built to streamline the sales process. It allows the sales team to track leads from initial contact to conversion. I implemented a complex dashboard with chart visualizations for sales data and a role-based access control system for different employee levels.",
+      "role": "Full Stack Dev",
+      "client": "BetterSty Internal",
+      "features": [
+        "Role-Based Access Control (RBAC)",
+        "Real-time lead tracking dashboard",
+        "Data visualization with Charts.js",
+        "Automated email reporting system"
+      ],
+      "tech": ["MERN Stack", "Redux", "Charts.js"],
+      "demo": "#",
+      "github": ""
+    },
+    {
+      "id": 3,
+      "title": "Zepto Clone",
+      "type": "personal",
+      "category": "Personal Project",
+      "status": "Completed",
+      "date": "Nov 2023",
+      "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop",
+      "desc": "A fully functional e-commerce grocery delivery app clone with real-time cart management.",
+      "fullDesc": "To master React Native, I built a pixel-perfect clone of the Zepto app. This project handles complex state management for the shopping cart and integrates with Firebase for real-time order status updates. It includes a mock payment gateway and address management system.",
+      "role": "Mobile Developer",
+      "client": "Personal Portfolio",
+      "features": [
+        "Real-time cart management with Redux",
+        "Live order tracking simulation",
+        "Google Maps integration for delivery address",
+        "Optimized list rendering for thousands of products"
+      ],
+      "tech": ["React Native", "Firebase", "Redux"],
+      "demo": "#",
+      "github": "#"
+    },
+    {
+      "id": 4,
+      "title": "StudyNotion EdTech",
+      "type": "personal",
+      "category": "Personal Project",
+      "status": "In Progress",
+      "date": "Apr 2024",
+      "image": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1974&auto=format&fit=crop",
+      "desc": "An educational platform where instructors can create courses and students can purchase them.",
+      "fullDesc": "StudyNotion is a massive EdTech platform I am currently building. It serves two user types: Instructors and Students. Instructors can upload course videos (handled by Cloudinary) and create content. Students can buy courses via Razorpay and track their progress. It's a full-fledged LMS.",
+      "role": "Full Stack Architect",
+      "client": "Personal Portfolio",
+      "features": [
+        "Course creation and video uploading",
+        "Payment gateway integration (Razorpay)",
+        "Student dashboard and progress tracking",
+        "Review and Rating system"
+      ],
+      "tech": ["MERN Stack", "Razorpay", "Cloudinary"],
+      "demo": "#",
+      "github": "#"
+    },
+    {
+      "id": 5,
+      "title": "Blog Application",
+      "type": "personal",
+      "category": "Personal Project",
+      "status": "Completed",
+      "date": "Sep 2023",
+      "image": "https://images.unsplash.com/photo-1499750310159-5b5f2269592b?q=80&w=2070&auto=format&fit=crop",
+      "desc": "A dynamic blogging platform with rich text editing, comments, and user authentication.",
+      "fullDesc": "A content management system built from scratch. I implemented a rich-text editor for writing posts and a comment system for engagement. The backend uses MongoDB for flexible data storage, and the frontend is optimized with Next.js for SEO.",
+      "role": "Backend Developer",
+      "client": "Personal Portfolio",
+      "features": [
+        "Rich Text Editor integration",
+        "User Authentication (JWT)",
+        "Comment and Like system",
+        "SEO friendly URL structure"
+      ],
+      "tech": ["Next.js", "MongoDB", "Tailwind"],
+      "demo": "#",
+      "github": "#"
+    },
+    {
+      "id": 6,
+      "title": "Weather App",
+      "type": "personal",
+      "category": "Personal Project",
+      "status": "Completed",
+      "date": "Aug 2023",
+      "image": "https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=2070&auto=format&fit=crop",
+      "desc": "A sleek weather forecasting app using OpenWeatherMap API.",
+      "fullDesc": "A simple yet beautiful weather application that fetches real-time data based on user location or search. It demonstrates proficiency in handling 3rd party APIs, asynchronous JavaScript, and error handling for bad network conditions.",
+      "role": "Frontend Developer",
+      "client": "Personal Portfolio",
+      "features": [
+        "Geolocation API integration",
+        "5-Day weather forecast",
+        "Dynamic background based on weather",
+        "Error handling for invalid cities"
+      ],
+      "tech": ["JavaScript", "HTML/CSS", "API"],
+      "demo": "#",
+      "github": "#"
+    }
+  ]
+}
