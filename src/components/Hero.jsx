@@ -10,7 +10,7 @@ const Hero = () => {
     // 'overflow-hidden' hata diya taki scroll ho sake.
     <section
       id="home"
-      className="relative w-full min-h-screen flex flex-col items-center justify-center z-[10] pt-32 pb-10"
+      className="relative  md:py-24 w-full min-h-screen flex flex-col items-center justify-center z-[10] pt-0.5 pb-10"
     >
       {/* --- FLOATING CODE CARDS (Position fix) --- */}
       {/* Inhe thoda adjust kiya taki content par na chadhein */}
@@ -18,7 +18,7 @@ const Hero = () => {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="hidden xl:block absolute left-[5%] top-[30%] z-[20]"
+        className="hidden xl:block absolute left-[5%] top-[50%] z-[20]"
       >
         <div className="p-4 rounded-xl bg-[#0b0b15]/80 border border-slate-800 backdrop-blur-md font-mono text-xs shadow-2xl">
           <div className="flex gap-2 mb-3">
@@ -26,8 +26,10 @@ const Hero = () => {
             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
             <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
           </div>
-          <p className="text-slate-500">// Building Future</p>
-          <p>
+          <p className="text-gray-500">// Building Future</p>
+          <p className="text-gray-500">// one line at a time</p>
+
+          <p className="text-white">
             <span className="text-purple-400">console</span>.
             <span className="text-blue-400">log</span>('
             <span className="text-green-400">Hello World!</span>');
@@ -39,18 +41,27 @@ const Hero = () => {
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="hidden xl:block absolute right-[5%] top-[30%] z-[20]"
+        className="hidden xl:block absolute right-[5%] top-20  z-[20]"
       >
-        <div className="p-5 rounded-xl bg-[#0b0b15]/90 border border-purple-500/20 backdrop-blur-md shadow-2xl max-w-[250px]">
+        <div className="p-5 rounded-xl bg-[#0b0b15]/90 border border-purple-500/20 backdrop-blur-md shadow-2xl max-w-[260px]">
           <div className="font-mono text-sm leading-6">
-            <span className="text-purple-400">const</span> <span className="text-white">dev</span> ={' '}
-            <span className="text-white">{'{'}</span>
+            <span className="text-purple-400">const</span>{' '}
+            <span className="text-blue-300">devProfile</span>{' '}
+            <span className="text-white">= {'{'}</span>
             <br />
-            &nbsp;name: <span className="text-blue-400">'{data.personalInfo.name}'</span>,<br />
-            &nbsp;skills: [<span className="text-green-400">'React'</span>,{' '}
-            <span className="text-green-400">'Node'</span>],
+            &nbsp;&nbsp;<span className="text-pink-300">name</span>:{' '}
+            <span className="text-cyan-300">'{data.personalInfo.name}'</span>,
             <br />
-            <span className="text-white">{'}'}</span>;
+            &nbsp;&nbsp;<span className="text-pink-300">title</span>:{' '}
+            <span className="text-lime-300">'Innovation Architect'</span>,
+            <br />
+            &nbsp;&nbsp;<span className="text-pink-300">skills</span>: [
+            <span className="text-green-300">'React'</span>,{' '}
+            <span className="text-green-300">'Node'</span>,{' '}
+            <span className="text-green-300">'MongoDB'</span>
+            ],
+            <br />
+            <span className="text-white">{'}'};</span>
           </div>
         </div>
       </motion.div>
@@ -79,7 +90,20 @@ const Hero = () => {
         <div className="text-2xl md:text-4xl font-medium mb-6 h-[40px] flex items-center gap-2">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold">
             <TypeAnimation
-              sequence={['Full Stack Developer', 1000, 'Innovation Creator', 1000]}
+              sequence={[
+                'Full Stack Developer',
+                1000,
+                'Innovation Creator',
+                1000,
+                'Web Developer',
+                1000,
+                'UI-UX Designer',
+                1000,
+                'Backend Developer',
+                1000,
+                'Future-Ready Tech Builder',
+                1000,
+              ]}
               wrapper="span"
               speed={50}
               repeat={Infinity}

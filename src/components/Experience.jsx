@@ -239,7 +239,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative w-full py-20 md:py-32 flex flex-col items-center justify-center overflow-hidden z-[20]"
+      className="relative w-full py-20 md:py-12 flex flex-col items-center justify-center overflow-hidden z-[20]"
     >
       {/* Background Glows */}
       <div className="absolute top-[20%] left-0 w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />

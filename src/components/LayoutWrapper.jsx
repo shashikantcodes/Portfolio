@@ -1,12 +1,17 @@
-'use client'; // Ye zaroori hai kyunki hum state use kar rahe hain
+'use client';
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
-import ThreeBackground from '@/components/ThreeBackground'; // Ye Naya 3D wala background hai
-import Preloader from '@/components/Preloader'; // Ye Loading screen hai
+import ThreeBackground from '@/components/ThreeBackground';
+import Preloader from '@/components/Preloader';
 import { AnimatePresence } from 'framer-motion';
+import { usePathname } from 'next/navigation'; // Pathname check karne ke liye
 
 const LayoutWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname(); // Current URL path milega
+
+  // Check agar hum project detail page par hain
+  const isProjectPage = pathname?.startsWith('/project/');
 
   return (
     <>
@@ -21,8 +26,8 @@ const LayoutWrapper = ({ children }) => {
           {/* A. 3D Background (Sabse peeche) */}
           <ThreeBackground />
 
-          {/* B. Navbar (Desktop pe top, Mobile pe bottom) */}
-          <Navbar />
+          {/* B. Navbar (Sirf tab dikhao jab hum project page par NA ho) */}
+          {!isProjectPage && <Navbar />}
 
           {/* C. Page Content (Hero, Skills etc.) */}
           {children}
