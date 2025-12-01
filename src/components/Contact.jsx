@@ -1,29 +1,83 @@
 'use client';
-import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Mail,
-  User,
-  MessageSquare,
-  Send,
+  Coffee,
   Github,
   Linkedin,
-  Terminal,
+  Mail,
+  MessageSquare,
+  Send,
   Sparkles,
-  Coffee,
+  Terminal,
+  User,
 } from 'lucide-react';
+import { useState } from 'react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: "Let's work together!",
+    message: '',
+  });
+
+  const [status, setStatus] = useState({
+    loading: false,
+    success: null,
+    msg: '',
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // clear error message
+    setStatus({ loading: false, success: null, msg: '' });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+
+    // client validation
+    if (!formData.name.trim()) {
+      return setStatus({ success: false, msg: 'Name is required!' });
+    }
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      return setStatus({ success: false, msg: 'Valid email is required!' });
+    }
+    if (formData.message.trim().length < 10) {
+      return setStatus({ success: false, msg: 'Message must be 10+ characters!' });
+    }
+
+    setStatus({ loading: true, success: null, msg: '' });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setStatus({ loading: false, success: false, msg: data.error });
+      } else {
+        setStatus({ loading: false, success: true, msg: 'Message sent successfully!' });
+
+        setFormData({
+          name: '',
+          email: '',
+          subject: "Let's work together!",
+          message: '',
+        });
+      }
+    } catch (err) {
+      setStatus({
+        loading: false,
+        success: false,
+        msg: 'Something went wrong!',
+      });
+    }
   };
 
   return (
@@ -67,7 +121,7 @@ const Contact = () => {
 
       {/* --- MAIN CONTENT GRID --- */}
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-        {/* LEFT: CONTACT FORM */}
+        {/* LEFT FORM */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -79,6 +133,7 @@ const Contact = () => {
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* NAME */}
             <div className="space-y-2">
               <label className="text-sm text-gray-400 font-medium ml-1">Full Name</label>
               <div className="relative">
@@ -97,6 +152,7 @@ const Contact = () => {
               </div>
             </div>
 
+            {/* EMAIL */}
             <div className="space-y-2">
               <label className="text-sm text-gray-400 font-medium ml-1">Email Address</label>
               <div className="relative">
@@ -107,7 +163,7 @@ const Contact = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="your@email.com"
+                  placeholder="you@email.com"
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full bg-[#1a1a2e] border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all"
@@ -115,6 +171,7 @@ const Contact = () => {
               </div>
             </div>
 
+            {/* SUBJECT */}
             <div className="space-y-2">
               <label className="text-sm text-gray-400 font-medium ml-1">Subject</label>
               <div className="relative">
@@ -125,12 +182,15 @@ const Contact = () => {
                 <input
                   type="text"
                   name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   placeholder="Let's work together!"
                   className="w-full bg-[#1a1a2e] border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all"
                 />
               </div>
             </div>
 
+            {/* MESSAGE */}
             <div className="space-y-2">
               <label className="text-sm text-gray-400 font-medium ml-1">Message</label>
               <div className="relative">
@@ -146,20 +206,33 @@ const Contact = () => {
               </div>
             </div>
 
+            {/* SUBMIT BUTTON */}
             <button
               type="submit"
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all flex items-center justify-center gap-2 group"
+              disabled={status.loading}
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all flex items-center justify-center gap-2 group disabled:opacity-60"
             >
               <Send
                 size={20}
-                className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"
-              />{' '}
-              Send Message
+                className={
+                  status.loading
+                    ? 'animate-spin'
+                    : 'group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform'
+                }
+              />
+              {status.loading ? 'Sending...' : 'Send Message'}
             </button>
+
+            {/* STATUS MESSAGE */}
+            {status.msg && (
+              <p className={`text-sm mt-2 ${status.success ? 'text-green-400' : 'text-red-400'}`}>
+                {status.msg}
+              </p>
+            )}
           </form>
         </motion.div>
 
-        {/* RIGHT: CONTACT INFO & SOCIALS */}
+        {/* RIGHT SECTION SAME AS YOURS */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -176,7 +249,6 @@ const Contact = () => {
             </p>
 
             <div className="space-y-4">
-              {/* Email Card */}
               <a
                 href="mailto:contact@shashikant.com"
                 className="flex items-center gap-4 p-4 rounded-2xl bg-[#1a1a2e] border border-white/5 hover:border-purple-500/30 hover:bg-[#202035] transition-all group"
@@ -190,7 +262,6 @@ const Contact = () => {
                 </div>
               </a>
 
-              {/* LinkedIn Card */}
               <a
                 href="#"
                 target="_blank"
@@ -205,7 +276,6 @@ const Contact = () => {
                 </div>
               </a>
 
-              {/* GitHub Card */}
               <a
                 href="#"
                 target="_blank"
@@ -222,11 +292,9 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Collaboration Card (Bottom Right) */}
+          {/* Collaboration Card */}
           <div className="p-8 rounded-[30px] bg-[#0f0c29] border border-white/10 relative overflow-hidden group">
-            {/* Glow Effect */}
             <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-gradient-to-br from-purple-600/20 to-blue-600/20 blur-[80px] -mr-20 -mt-20 pointer-events-none" />
-
             <div className="relative z-10">
               <h4 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
                 <Coffee className="text-yellow-400" /> Let's Collaborate
@@ -242,7 +310,7 @@ const Contact = () => {
         </motion.div>
       </div>
 
-      {/* --- THANK YOU CARD (Bottom) --- */}
+      {/* --- THANK YOU CARD --- */}
       <div className="mt-24 w-full max-w-4xl px-4 text-center">
         <div className="p-8 rounded-3xl bg-gradient-to-r from-transparent via-white/5 to-transparent border-y border-white/5">
           <p className="text-gray-400 text-sm md:text-base">

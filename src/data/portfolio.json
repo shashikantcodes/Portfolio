@@ -146,12 +146,34 @@
       "github": "#"
     },
     {
+      "id": 7,
+      "title": "Shopping Cart",
+      "type": "personal",
+      "category": "Personal Project",
+      "status": "Completed",
+      "date": "sep 2024",
+      "image": "https://images.unsplash.com/photo-1499750310159-5b5f2269592b?q=80&w=2070&auto=format&fit=crop",
+      "desc": "A dynamic blogging platform with rich text editing, comments, and user authentication.",
+      "fullDesc": "A content management system built from scratch. I implemented a rich-text editor for writing posts and a comment system for engagement. The backend uses MongoDB for flexible data storage, and the frontend is optimized with Next.js for SEO.",
+      "role": "Backend Developer",
+      "client": "Personal Portfolio",
+      "features": [
+        "Rich Text Editor integration",
+        "User Authentication (JWT)",
+        "Comment and Like system",
+        "SEO friendly URL structure"
+      ],
+      "tech": ["Next.js", "MongoDB", "Tailwind"],
+      "demo": "#",
+      "github": "#"
+    },
+    {
       "id": 6,
       "title": "Weather App",
       "type": "personal",
       "category": "Personal Project",
       "status": "Completed",
-      "date": "Aug 2023",
+      "date": "Dec 2024",
       "image": "https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=2070&auto=format&fit=crop",
       "desc": "A sleek weather forecasting app using OpenWeatherMap API.",
       "fullDesc": "A simple yet beautiful weather application that fetches real-time data based on user location or search. It demonstrates proficiency in handling 3rd party APIs, asynchronous JavaScript, and error handling for bad network conditions.",
